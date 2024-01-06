@@ -1,0 +1,16 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "C#: Boilerplate.Api (watch)",
+            "type": "coreclr",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/Boilerplate.Api/bin/Debug/netcoreapp3.1/Boilerplate.Api.dll", // Adjust the path and framework version as needed
+            "args": [],
+            "cwd": "${workspaceFolder}/src/Boilerplate.Api",
+            "console": "integratedTerminal",
+            "preLaunchTask": "dotnet watch",
+            "internalConsoleOptions": "openOnSessionStart"
+        }
+    ]
+}

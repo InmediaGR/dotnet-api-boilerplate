@@ -10,6 +10,8 @@ services:
   db-server:
     image: postgres:latest
     container_name: db-server
+    expose:
+      - "5432" 
     ports:
       - "5432:5432"
     networks:

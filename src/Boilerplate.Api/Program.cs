@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -65,6 +66,15 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseRouting();
+
+app.Use(async (context, next) =>
+{
+    // Console.WriteLine($"Request received: {context.Request.Method} {context.Request.Path}");
+    Console.WriteLine($"Request received: {context.Request.Method} {context.Request.Path}", context.Request);
+
+    await next.Invoke();
+});
+
 
 app.UseSwaggerSetup();
 app.UseHsts();
