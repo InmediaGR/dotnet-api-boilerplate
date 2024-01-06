@@ -52,8 +52,9 @@ if (builder.Environment.EnvironmentName != "Testing")
     
     // Add opentelemetry
     builder.AddOpenTemeletrySetup();
-}
 
+    Console.WriteLine($"EnvironmentName is: {builder.Environment.EnvironmentName}");
+}
 
 var app = builder.Build();
 
@@ -69,12 +70,14 @@ app.UseRouting();
 
 app.Use(async (context, next) =>
 {
+    var logger = context.RequestServices.GetRequiredService<ILogger<Program>>();
+    logger.LogInformation("Request received: {Method} {Path}", context.Request.Method, context.Request.Path);
+
     // Console.WriteLine($"Request received: {context.Request.Method} {context.Request.Path}");
-    Console.WriteLine($"Request received: {context.Request.Method} {context.Request.Path}", context.Request);
+    // Console.WriteLine($"Request received: {context.Request.Method} {context.Request.Path}", context.Request);
 
     await next.Invoke();
 });
-
 
 app.UseSwaggerSetup();
 app.UseHsts();
