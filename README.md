@@ -95,6 +95,7 @@ For more information, please take a look on swagger documentation.
 3. Give this repo a star!
 
 # Migrations
+https://api.nuget.org/v3/index.json
 To run migrations on this project, you need the dotnet-ef tool.
 - Run ``dotnet tool install --global dotnet-ef``
 - Now, depending on your OS, you have different commands:
